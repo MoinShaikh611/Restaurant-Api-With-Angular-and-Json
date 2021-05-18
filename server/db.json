@@ -1,0 +1,29 @@
+{
+  "resto": [],
+  "users": [
+    {
+      "email": "imoin611@gmail.com",
+      "name": "Moinuddin",
+      "password": "monu@786",
+      "id": 1
+    },
+    {
+      "email": "wasim578@gmail.com",
+      "name": "Wasim",
+      "password": "wasim",
+      "id": 2
+    },
+    {
+      "email": "imoin611@gmail.com",
+      "name": "Moinuddin",
+      "password": "monu@786",
+      "id": 3
+    },
+    {
+      "email": "wasim578@gmail.com",
+      "name": "wasim",
+      "password": "wasim",
+      "id": 4
+    }
+  ]
+}
