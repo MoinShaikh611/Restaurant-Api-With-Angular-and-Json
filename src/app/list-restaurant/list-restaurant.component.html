@@ -1,0 +1,29 @@
+<h1 class="text-center m-5">List of Restaurants</h1>
+
+<div class="container">
+<table class="table">
+    <thead>
+      <tr class="text-uppercase">
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">location</th>
+        <th scope="col">rating</th>
+        <th scope="col">contact</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let resto of collections">
+      <tr class="table-success">
+        <td>{{resto.id}}</td>
+        <td>{{resto.name}}</td>
+        <td>{{resto.location}}</td>
+        <td>{{resto.rating}}</td>
+        <td>{{resto.contact}}</td>
+        <td>
+          <a routerLink="/update/{{resto.id}}"><span><i class="fas fa-edit mr-4"></i></span></a>
+          <a><span><i class="fas fa-trash-alt" (click)="deleteResto(resto.id)"></i></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

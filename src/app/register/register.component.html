@@ -1,0 +1,41 @@
+
+
+<h1 class="text-center p-5">Registration Form </h1>
+<form [formGroup]="RegisterForm">   
+    <div class="container px-5">
+<div class="container px-5">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" formControlName="email" required>
+        <span *ngIf="Email.invalid && Email.touched && Email.errors?.required" class="text-danger text-capitalize">Email required</span>
+        <span *ngIf="Email.invalid && Email.touched && Email.errors?.pattern" class="text-danger text-capitalize">Please Enter Valid Email Address</span>
+    </div> 
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name" required>
+        <span *ngIf="Name.invalid && Name.touched && Name.errors?.required" class="text-danger text-capitalize">Name Required</span>
+        <span *ngIf="Name.invalid && Name.touched && Name.errors?.minlength" class="text-danger text-capitalize">Minimum 3 characters</span>
+    </div> 
+    
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" formControlName="password" required>
+        <span *ngIf="Password.invalid && Password.touched && Password.errors?.required" class="text-danger text-capitalize">Password Required</span>
+        <span *ngIf="Password.invalid && Password.touched && Password.errors?.minlength" class="text-danger text-capitalize">Minimum 5 characters</span>
+    </div>
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show">
+        <a (click)="closealert()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Data Added successfully
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+        <a (click)="closealert()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Invalid Data Please provide accurate Data
+    </div>
+    <div class="text-center">
+        <button type="submit" (click)="RegisterResto()" class="btn btn-primary" [disabled]="RegisterForm.invalid">Register</button>
+    </div>
+</div>
+</div>  
+</form>
+
