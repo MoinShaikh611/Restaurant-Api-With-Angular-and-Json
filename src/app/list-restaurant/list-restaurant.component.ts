@@ -8,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListRestaurantComponent implements OnInit {
   public collections:any;
-  constructor(private commonService:CommonService) { }
+  constructor(private commonService:CommonService) { 
+    
+  }
 
   ngOnInit(): void {
+    
     this.commonService.getRestoList()
     .subscribe(data => {
-      this.collections = data
+      this.collections = data;
     });
   }
 

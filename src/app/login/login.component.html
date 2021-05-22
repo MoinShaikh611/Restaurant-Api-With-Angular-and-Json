@@ -4,6 +4,7 @@
 <form [formGroup]="LoginForm">   
     <div class="container px-5">
 <div class="container px-5">
+    <span *ngIf="infoMessage.length > 0">{{ infoMessage }}</span>
     <div class="form-group">
         <label for="email">Email</label>
         <input type="email" class="form-control" formControlName="email" required>

@@ -11,9 +11,11 @@ import { ListRestaurantComponent } from './list-restaurant/list-restaurant.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { AuthGuard } from './guards/auth.guard';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 
 @NgModule({
@@ -38,7 +40,13 @@ import { MaterialModule } from './material/material.module';
 
   ],
   schemas:[ NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [AuthGuard,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true//multiple =true so that we can use multiple interceptor if required
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

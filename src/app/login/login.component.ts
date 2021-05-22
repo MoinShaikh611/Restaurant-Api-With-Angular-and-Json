@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   errorMessage:boolean = false;
   email:string;
   password:string;
-  LoginArray:string[] = []
+  // LoginArray:string[] = []
   constructor(private commonService:CommonService,private fb:FormBuilder,private router:Router,private activatedRoute:ActivatedRoute) { }
 
 
@@ -29,17 +29,23 @@ export class LoginComponent implements OnInit {
   get Password(){
     return this.LoginForm.get('password');
   }
+  infoMessage='';
   ngOnInit(): void {
+    this.activatedRoute.queryParams
+      .subscribe((params) => {
+        if(params.registered === 'true' && params.registered !== undefined){
+          this.infoMessage = 'Registration Successful Please Login'
+        }
+      })
   }
   LoginResto(){
-    this.LoginArray = this.LoginForm.getRawValue()
-    if(this.LoginArray['email']  === 'imoin611@gmail.com' && this.LoginArray['password'] === 'monu@786'){
-      this.router.navigate(['list'])
-    }
-    else{
-      this.errorMessage = true;
-    }
-    
+    this.commonService.loginResto(this.LoginForm.getRawValue())    
+      .subscribe((result) => {console.log(result);
+        localStorage.setItem('token','token generated from server');
+        this.router.navigateByUrl('/');
+        window.location.reload();
+        this.router.navigate(['']);
+      })
   }
 
   closealert(){

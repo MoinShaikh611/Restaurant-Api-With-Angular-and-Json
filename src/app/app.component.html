@@ -93,42 +93,36 @@
   <links>
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active" *ngIf="login">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="list">Home</a>
       </li>
-      <li class="nav-item ">
+      <li class="nav-item " *ngIf="login">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="add">Add Resto</a>
       </li>
  
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="login">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="list">List Resto</a>
       </li>
 
-      <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Basic dropdown<span class="caret"></span></a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-        </div>
-      </li>
+  
 
     </ul>
     <!-- Links -->
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!login">
         <a class="nav-link" routerLink="login">
           <span>Login</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!login">
         <a class="nav-link" routerLink="register">
           <span>Register</span>
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="login" (click)="logout()">
+        <a class="nav-link">
+          <span>Logout</span>
         </a>
       </li>
       <li class="nav-item">

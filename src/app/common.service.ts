@@ -34,6 +34,21 @@ export class CommonService {
     return this.http.post(`${this.apiUrl}/users`,data)
   }
 
+  loginResto(data){
+    return this.http.post(`${this.apiUrl}/users`,data)
+  }
 
+  getUsersFromLogin(){
+    return this.http.get(`${this.apiUrl}/users`);
+  }
+
+  loggedIn(){
+    // return true or false if token exist or not
+    return !!localStorage.getItem('token')
+  }
+
+  getToken(){
+    return localStorage.getItem('token')
+  }
 
 }

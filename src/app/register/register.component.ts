@@ -1,6 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonService } from './../common.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   alert:boolean = false;
   errorMessage:boolean = false;
-  constructor(private commonService:CommonService,private fb:FormBuilder) { }
+  constructor(private commonService:CommonService,private fb:FormBuilder,private router:Router) { }
 
   get Email(){
     return this.RegisterForm.get('email');
@@ -40,6 +41,14 @@ export class RegisterComponent implements OnInit {
         console.log(result);
         this.alert = true;
         this.RegisterForm.reset();
+        if(this.commonService.loggedIn()){
+          this.router.navigate(['list']);
+          this.router.navigateByUrl('/list')
+        }
+        else{
+          this.router.navigate(['login'],{queryParams:{registered:'true'}});
+        }
+        
       },
       (err)=>{
         if(err){
